@@ -1,5 +1,6 @@
 import settings
 import math
+import time
 
 def coord_distance(lat1, lon1, lat2, lon2):
     """
@@ -35,10 +36,11 @@ def post_listing_to_slack(sc, listing):
     :param sc: A slack client.
     :param listing: A record of the listing.
     """
+    print("{}: Slack {} ".format(time.ctime(), listing))
     desc = "{0} | {1} | {2} | {3} | <{4}>".format(listing["area"], listing["price"], listing["bart_dist"], listing["name"], listing["url"])
     sc.api_call(
         "chat.postMessage", channel=settings.SLACK_CHANNEL, text=desc,
-        username='pybot', icon_emoji=':robot_face:'
+        username='pybot', icon_emoji=':house_buildings:'
     )
 
 def find_points_of_interest(geotag, location):
@@ -75,7 +77,7 @@ def find_points_of_interest(geotag, location):
     # matches anything in our list of neighborhoods.
     if len(area) == 0:
         for hood in settings.NEIGHBORHOODS:
-            if hood in location.lower():
+            if hood.lower() in location.lower():
                 area = hood
 
     return {

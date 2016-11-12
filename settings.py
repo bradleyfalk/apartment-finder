@@ -75,20 +75,29 @@ BOXES = {
 # one of the boxes you defined, it will be checked to see if the neighborhood name it was listed under matches one
 # of these.  This is less accurate than the boxes, because it relies on the owner to set the right neighborhood,
 # but it also catches listings that don't have coordinates (many listings are missing this info).
-NEIGHBORHOODS = ["berkeley north", "berkeley", "rockridge", "adams point", "oakland lake merritt", "cow hollow", "piedmont", "pac hts", "pacific heights", "lower haight", "inner sunset", "outer sunset", "presidio", "palo alto", "richmond / seacliff", "haight ashbury", "alameda", "twin peaks", "noe valley", "bernal heights", "glen park", "sunset", "mission district", "potrero hill", "dogpatch"]
+NEIGHBORHOODS = ["berkeley north", "berkeley", "rockridge", "adams point", "oakland lake merritt", "cow hollow",
+                 "piedmont", "pac hts", "pacific heights", "lower haight", "inner sunset", "outer sunset", "presidio",
+                 "palo alto", "richmond / seacliff", "haight ashbury", "alamo square / nopa", "twin peaks",
+                 "noe valley", "bernal heights", "glen park", "sunset", "mission district", "potrero hill",
+                 "dogpatch", "castro / upper market", " hayes valley", "north beach / telegraph hill", "potrero hill",
+                 "SOMA / south beach", "mission", "lower nob hill", "nob hill", "west portal / forest hill",
+                 "western addition", "downtown / civic / van ness"]
 
 ## Transit preferences
 
 # The farthest you want to live from a transit stop.
-MAX_TRANSIT_DIST = 2 # kilometers
+MAX_TRANSIT_DIST = 5 # kilometers
 
 # Transit stations you want to check against.  Every coordinate here will be checked against each listing,
 # and the closest station name will be added to the result and posted into Slack.
 TRANSIT_STATIONS = {
+    "civic_center_bart": [37.779861,-122.413998],
+    "glen_park_bart": [37.733118,-122.433808],
     "oakland_19th_bart": [37.8118051,-122.2720873],
     "macarthur_bart": [37.8265657,-122.2686705],
     "rockridge_bart": [37.841286,-122.2566329],
     "downtown_berkeley_bart": [37.8629541,-122.276594],
+    "lake_merritt": [37.7970,-122.2652],
     "north_berkeley_bart": [37.8713411,-122.2849758]
 }
 

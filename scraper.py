@@ -102,6 +102,7 @@ def scrape_area(area):
             # Save the listing so we don't grab it again.
             session.add(listing)
             session.commit()
+            print("{}: Listing {}".format(time.ctime(), result))
 
             # Return the result if it's near a bart station, or if it is in an area we defined.
             if len(result["bart"]) > 0 or len(result["area"]) > 0:
@@ -120,10 +121,12 @@ def do_scrape():
     # Get all the results from craigslist.
     all_results = []
     for area in settings.AREAS:
+        print("{}: Scrapping {}".format(time.ctime(), area))
         all_results += scrape_area(area)
 
     print("{}: Got {} results".format(time.ctime(), len(all_results)))
 
     # Post each result to slack.
     for result in all_results:
+        print("{}: Got {} results".format(time.ctime(), result))
         post_listing_to_slack(sc, result)
